@@ -1,0 +1,8 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container>* {
+    flex: 0 1 160px;
+}

@@ -40,7 +40,8 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: $blue-accent;
+  background: rgb(2,0,36);  
+  background: linear-gradient(90deg, rgba(2,0,36,1) 18%, rgba(121,9,93,1) 46%, rgba(0,212,255,1) 83%);
   color: $white;
   padding: $spacing-3xs $spacing-xs;
 
@@ -118,6 +119,7 @@ form {
   flex-flow: row nowrap;
   justify-content:space-around;
   align-items: stretch;
+  margin-right: 6vw;
 }
 
 .search-params {
@@ -126,5 +128,12 @@ form {
 }
 .sidebar {
   flex-grow: 1;
+}
 
+.main--container{
+  width: 66%;
+}
+
+main{
+  display: flex;
 }

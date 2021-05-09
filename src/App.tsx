@@ -1,20 +1,22 @@
 import React from 'react';
+import { BookSearch } from './components/book-search/BookSearch';
 import './styles/App.scss';
-import BookSearch from './book-search/BookSearch';
+
 
 function App() {
-  return (
-      <div>
-        <header className="header">
-          <div className="header--content">
-            <h1>My Good Reads</h1>
-          </div>
-        </header>
-        <main>
-          <BookSearch/>
-        </main>
 
-      </div>
+  return (
+    <div>
+      <header className="header">
+        <div className="header--content">
+          <h1>My Good Reads</h1>
+        </div>
+      </header>
+      <main>
+        <BookSearch />
+      </main>
+
+    </div>
   );
 }
 
