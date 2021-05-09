@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BookItem } from "../../shared/interfaces/BookSearchResponse";
-import { BookList } from "../book-list/BookListComponent";
-import { useWishlist } from "../wish-list/useWishlist";
-import { WishListComponent } from "../wish-list/WishListComponent";
-import { useBookSearch } from "./useBookSearch";
+import { BookList } from "../BookList/BookListComponent";
+import { useWishlist } from "../../hooks/useWishlist";
+import { WishListComponent } from "../WishList/WishListComponent";
+import { useBookSearch } from "../../hooks/useBookSearch";
+import loadingIcon from '../../assets/loading.gif';
 
 interface Context {
     wishList: BookItem[];
@@ -16,6 +17,7 @@ export const BooksContext = React.createContext({} as Context);
 
 export const BookSearch = () => {
 
+    const [loading, setLoading] = useState(false);
     const { wishList, addToWishList, removeFromWishList } = useWishlist();
     const {
         allAvailableBooks,
@@ -24,19 +26,28 @@ export const BookSearch = () => {
         requestBooks,
         updateBookTypeToSearch,
         updateBookType,
-        disableBook
+        disableBook,
+        clearList
     } = useBookSearch();
 
     useEffect(() => {
-        requestBooks();
+        requestBooks().then(() => {
+            setLoading(false);
+        });
     }, [bookTypeToSearch]);
 
     useEffect(() => {
-        const handler = setTimeout(() => {
+        if (bookType)
+            setLoading(true);
+
+        if (allAvailableBooks.length)
+            clearList();
+
+        const timerId = setTimeout(() => {
             updateBookTypeToSearch(bookType);
         }, 500);
         return () => {
-            clearTimeout(handler);
+            clearTimeout(timerId);
         };
     }, [bookType]);
 
@@ -72,6 +83,16 @@ export const BookSearch = () => {
                                         </p>
                                     </div>
                                 )}
+
+                                {(bookType && !allAvailableBooks.length && !loading) && (
+                                    <div className="empty">
+                                        <p>
+                                            No Results
+                                        </p>
+                                    </div>
+                                )}
+
+                                {loading && (<div className="empty"><img src={loadingIcon} /></div>)}
 
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import deleteIcon from '../../assets/delete.png'
-import { BooksContext } from '../book-search/BookSearch'
+import { BooksContext } from '../BookSearch/BookSearch'
 import './WishList.scss'
 
 export const WishListComponent = () => {

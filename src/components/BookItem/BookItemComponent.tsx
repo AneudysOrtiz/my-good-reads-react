@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { BookItem } from '../../shared/interfaces/BookSearchResponse';
-import { BooksContext } from '../book-search/BookSearch';
+import { BooksContext } from '../BookSearch/BookSearch';
 import imgPlaceHolder from '../../assets/book.png';
 import classnames from 'classnames';
 import './Book.scss';
@@ -9,7 +9,6 @@ interface BookItemProps {
     book: BookItem;
 }
 
-
 export const BookItemComponent = ({ book }: BookItemProps) => {
     const { addToWishList, disableBook } = useContext(BooksContext);
 
@@ -17,7 +16,6 @@ export const BookItemComponent = ({ book }: BookItemProps) => {
         addToWishList(book);
         disableBook(book.id, true);
     }
-
 
     return (
         <>

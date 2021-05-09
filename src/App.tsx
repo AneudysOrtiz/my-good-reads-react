@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookSearch } from './components/book-search/BookSearch';
+import { BookSearch } from './components/BookSearch/BookSearch';
 import './styles/App.scss';
 
 

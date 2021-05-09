@@ -1,6 +1,6 @@
 import React from 'react'
 import { BookItem } from '../../shared/interfaces/BookSearchResponse'
-import { BookItemComponent } from '../book-item/BookItemComponent'
+import { BookItemComponent } from '../BookItem/BookItemComponent'
 import './BookList.scss';
 
 interface BookListProps {

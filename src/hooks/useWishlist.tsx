@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BookItem } from '../../shared/interfaces/BookSearchResponse';
+import { BookItem } from '../shared/interfaces/BookSearchResponse';
 
 export const useWishlist = () => {
     const [wishList, setWishlist] = useState([] as BookItem[]);
