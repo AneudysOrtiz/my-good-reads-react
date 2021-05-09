@@ -31,6 +31,9 @@ export const BookSearch = () => {
     } = useBookSearch();
 
     useEffect(() => {
+        if (!bookTypeToSearch)
+            return;
+
         requestBooks().then(() => {
             setLoading(false);
         });

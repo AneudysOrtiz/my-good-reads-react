@@ -1,9 +1,9 @@
-.container{
+.book-list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.container>* {
+.book-list-container>* {
     flex: 0 1 306px;
 }

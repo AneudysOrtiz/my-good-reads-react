@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react'
-import { BookItemComponent, BookItemProps } from './BookItemComponent';
+import { WishListItemComponent, WishListItemProps } from './WishListItemComponent';
 
 describe('BookItem component', () => {
-    const defaultProps: BookItemProps = {
+    const defaultProps: WishListItemProps = {
         book: {
             id: "UAYvDwAAQBAJ",
             volumeInfo: {
@@ -16,15 +16,15 @@ describe('BookItem component', () => {
             },
             disabled: false
         },
-        addToWishList: jest.fn()
+        removeFromWishList: jest.fn()
     };
 
     test('renders without error', () => {
-        const { getByText, getByTestId } = render(<BookItemComponent {...defaultProps} />);
+        const { getByText, getByTestId } = render(<WishListItemComponent {...defaultProps} />);
         const linkElement = getByText(/Eloquent JavaScript/i);
         expect(linkElement).toBeInTheDocument();
 
-        fireEvent.click(getByTestId("btn-add-wish-list"))
-        expect(defaultProps.addToWishList).toHaveBeenCalledTimes(1);
+        fireEvent.click(getByTestId("btn-remove-wish-list"))
+        expect(defaultProps.removeFromWishList).toHaveBeenCalledTimes(1);
     });
 });

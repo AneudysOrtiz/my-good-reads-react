@@ -5,17 +5,12 @@ import imgPlaceHolder from '../../assets/book.png';
 import classnames from 'classnames';
 import './Book.scss';
 
-interface BookItemProps {
+export interface BookItemProps {
     book: BookItem;
+    addToWishList: (book: BookItem) => void;
 }
 
-export const BookItemComponent = ({ book }: BookItemProps) => {
-    const { addToWishList, disableBook } = useContext(BooksContext);
-
-    const handleAddWishList = (book: BookItem) => {
-        addToWishList(book);
-        disableBook(book.id, true);
-    }
+export const BookItemComponent = ({ book, addToWishList }: BookItemProps) => {
 
     return (
         <>
@@ -27,9 +22,16 @@ export const BookItemComponent = ({ book }: BookItemProps) => {
                         book.volumeInfo.authors ?
                             <p className="author">by {book.volumeInfo.authors}</p>
                             :
-                            <p className="author">Unknown</p>
+                            <p className="author">Unknown Author</p>
                     }
-                    <p className="publisher">{book.volumeInfo.publisher}</p>
+
+                    {
+                        book.volumeInfo.publisher ?
+                            <p className="publisher">{book.volumeInfo.publisher}</p>
+                            :
+                            <p className="publisher">Unknown Publisher</p>
+                    }
+
                     {
                         book.volumeInfo.description ?
                             <p className="description">{book.volumeInfo.description}</p>
@@ -37,7 +39,7 @@ export const BookItemComponent = ({ book }: BookItemProps) => {
                             <p className="description">No Description</p>
                     }
 
-                    <button onClick={() => handleAddWishList(book)} className={classnames('button', { 'disabled': !!book.disabled })}>Add to whishlist</button>
+                    <button data-testid="btn-add-wish-list" onClick={() => addToWishList(book)} className={classnames('button', { 'disabled': !!book.disabled })}>Add to whishlist</button>
                 </div>
             </div>
         </>

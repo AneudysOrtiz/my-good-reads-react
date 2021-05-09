@@ -126,7 +126,7 @@ form {
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: stretch;
-  margin: 0 1vw;
+  margin: 0 2vw;
 }
 
 .search-params {
@@ -144,4 +144,17 @@ form {
 
 main {
   display: flex;
+}
+
+
+@media only screen and (max-width: 768px) {
+  main{
+    flex-direction: column;
+    align-items: center;
+  }
+  .wish-list-container{
+    width: 80%;
+    height: 30vh;
+    overflow: scroll;
+  }
 }
