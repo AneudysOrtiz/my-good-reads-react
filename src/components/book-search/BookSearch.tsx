@@ -28,10 +28,7 @@ export const BookSearch = () => {
     } = useBookSearch();
 
     useEffect(() => {
-        async function getAllBooks() {
-            await requestBooks();
-        }
-        getAllBooks();
+        requestBooks();
     }, [bookTypeToSearch]);
 
     useEffect(() => {

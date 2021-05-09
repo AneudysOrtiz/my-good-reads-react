@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'Helvetica Neue', Arial, sans-serif;
+    'Helvetica Neue', Arial, sans-serif;
 }
 
 h1,
@@ -18,8 +18,6 @@ h2 {
 
 input {
   font-size: 0.8rem;
-  border: none;
-  border-bottom: 1px solid $gray40;
   padding: $spacing-xxs;
 }
 
@@ -40,8 +38,8 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgb(2,0,36);  
-  background: linear-gradient(90deg, rgba(2,0,36,1) 18%, rgba(121,9,93,1) 46%, rgba(0,212,255,1) 83%);
+  background: rgb(0, 212, 255);
+  // background: linear-gradient(90deg, rgba(2, 0, 36, 1) 18%, rgba(121, 9, 93, 1) 46%, rgba(0, 212, 255, 1) 83%);
   color: $white;
   padding: $spacing-3xs $spacing-xs;
 
@@ -52,11 +50,18 @@ a {
 
 .header--content {
   display: flex;
-  height: 10vh;
-  > * {
+  height: 7vh;
+
+  >* {
     display: flex;
     align-items: center;
   }
+
+  h1 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
 }
 
 main {
@@ -110,30 +115,33 @@ form {
 .full-width {
   width: 100%;
 }
+
 .book {
   border: 1px solid silver;
   margin-top: .5rem;
 }
+
 .book--container {
   display: flex;
   flex-flow: row nowrap;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: stretch;
-  margin-right: 6vw;
+  margin: 0 1vw;
 }
 
 .search-params {
   flex-grow: 3;
 
 }
+
 .sidebar {
   flex-grow: 1;
 }
 
-.main--container{
-  width: 66%;
+.main--container {
+  width: 80%;
 }
 
-main{
+main {
   display: flex;
 }

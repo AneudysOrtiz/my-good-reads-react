@@ -1,10 +1,17 @@
+.wish-list-container {
+    width: 20%;
+    height: 82vh;
+    border: 1px solid rgb(118, 118, 118);
+    padding: 10px;
+    border-radius: 4px;
+}
+
 .wish-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
 
     li {
-        width: 35vw;
         display: flex;
         margin-bottom: 10px;
     }
@@ -12,11 +19,12 @@
     img {
         width: 20px;
         height: 20px;
-        margin-right: 5px;
+        margin: 0 5px;
         cursor: pointer;
     }
 
 }
+
 .wish-list-title {
     margin-top: 0;
 }
