@@ -95,7 +95,7 @@ export const BookSearch = () => {
                                     </div>
                                 )}
 
-                                {loading && (<div className="empty"><img src={loadingIcon} /></div>)}
+                                {loading && (<div className="empty"><img src={loadingIcon} alt="loading" /></div>)}
 
                             </div>
                         </div>

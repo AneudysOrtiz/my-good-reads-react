@@ -4,7 +4,7 @@ import { BookItemComponent } from '../BookItem/BookItemComponent'
 import { BooksContext } from '../BookSearch/BookSearch';
 import './BookList.scss';
 
-interface BookListProps {
+export interface BookListProps {
     books: BookItem[];
 }
 
