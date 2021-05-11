@@ -148,13 +148,18 @@ main {
 
 
 @media only screen and (max-width: 768px) {
-  main{
-    flex-direction: column;
+  main {
+    flex-direction: column-reverse;
     align-items: center;
   }
-  .wish-list-container{
+
+  .wish-list-container {
     width: 80%;
     height: 30vh;
     overflow: scroll;
+  }
+
+  .book--container {
+    margin: 35px 0 0 0;
   }
 }

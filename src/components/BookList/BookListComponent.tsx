@@ -17,12 +17,10 @@ export const BookList = ({ books }: BookListProps) => {
     }
 
     return (
-        <>
-            <div className="book-list-container">
-                {
-                    books.map(item => <BookItemComponent key={item.id} book={item} addToWishList={handleAddWishList} />)
-                }
-            </div>
-        </>
+        <section className="book-list-container">
+            {
+                books.map(item => <BookItemComponent key={item.id} book={item} addToWishList={handleAddWishList} />)
+            }
+        </section>
     )
 }

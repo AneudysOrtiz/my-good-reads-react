@@ -40,13 +40,13 @@ export const BookSearch = () => {
     }, [bookTypeToSearch]);
 
     useEffect(() => {
-        if (bookType)
-            setLoading(true);
-
         if (allAvailableBooks.length)
             clearList();
 
         const timerId = setTimeout(() => {
+            if (bookType)
+                setLoading(true);
+
             updateBookTypeToSearch(bookType);
         }, 500);
         return () => {
@@ -56,56 +56,54 @@ export const BookSearch = () => {
 
 
     return (
-        <>
-            <BooksContext.Provider value={{ wishList, addToWishList, removeFromWishList, disableBook }}>
-                <div className="main--container">
-                    <div className="book--container">
-                        <div className="search-params">
-                            <div>
-                                <form
-                                    onSubmit={(e) => {
-                                        e.preventDefault();
-                                        updateBookTypeToSearch(bookType)
-                                    }}>
+        <BooksContext.Provider value={{ wishList, addToWishList, removeFromWishList, disableBook }}>
+            <div className="main--container">
+                <div className="book--container">
+                    <div className="search-params">
+                        <div>
+                            <form
+                                onSubmit={(e) => {
+                                    e.preventDefault();
+                                    updateBookTypeToSearch(bookType)
+                                }}>
 
-                                    <input
-                                        className="full-width"
-                                        autoFocus
-                                        name="gsearch"
-                                        type="search"
-                                        value={bookType}
-                                        placeholder="Search for books to add to your reading list and press Enter"
-                                        onChange={e => updateBookType(e.target.value)}
-                                    />
-                                </form>
-                                {!bookType && (
-                                    <div className="empty">
-                                        <p>
-                                            Try searching for a topic, for example
+                                <input
+                                    className="full-width"
+                                    autoFocus
+                                    name="gsearch"
+                                    type="search"
+                                    value={bookType}
+                                    placeholder="Search for books to add to your reading list and press Enter"
+                                    onChange={e => updateBookType(e.target.value)}
+                                />
+                            </form>
+                            {!bookType && (
+                                <div className="empty">
+                                    <p>
+                                        Try searching for a topic, for example
                                         <a onClick={() => { updateBookType("Javascript"); }}> {" "}"Javascript"</a>
+                                    </p>
+                                </div>
+                            )}
+
+                            {(bookType && !allAvailableBooks.length && !loading) && (
+                                <div className="empty">
+                                    <p>
+                                        No Results
                                         </p>
-                                    </div>
-                                )}
+                                </div>
+                            )}
 
-                                {(bookType && !allAvailableBooks.length && !loading) && (
-                                    <div className="empty">
-                                        <p>
-                                            No Results
-                                        </p>
-                                    </div>
-                                )}
+                            {loading && (<div className="empty"><img src={loadingIcon} alt="loading" /></div>)}
 
-                                {loading && (<div className="empty"><img src={loadingIcon} alt="loading" /></div>)}
-
-                            </div>
                         </div>
                     </div>
-
-                    <BookList books={allAvailableBooks} />
                 </div>
 
-                <WishListComponent />
-            </BooksContext.Provider>
-        </>
+                <BookList books={allAvailableBooks} />
+            </div>
+
+            <WishListComponent />
+        </BooksContext.Provider>
     );
 };
